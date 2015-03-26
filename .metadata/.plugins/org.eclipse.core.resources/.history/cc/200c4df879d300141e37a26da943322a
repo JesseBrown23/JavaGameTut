@@ -1,0 +1,15 @@
+package my.tdl.main;
+
+import javax.swing.JFrame;
+import my.project.gop.main.GameWindow;
+
+public class Main {
+
+
+	public static void main(String[] args) {
+		GameWindow frame = new GameWindow("The Dungeon Looter", 1280, 720);
+		frame.setFullscreen(1);
+		frame.setVisible(true);
+	}
+
+}

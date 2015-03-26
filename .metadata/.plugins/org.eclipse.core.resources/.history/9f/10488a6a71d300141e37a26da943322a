@@ -1,0 +1,9 @@
+package my.project.gop.main;
+
+public class GameWindow extends JFrame{
+
+	public GameWindow(String title, int width, int height) {
+		
+	}
+
+}

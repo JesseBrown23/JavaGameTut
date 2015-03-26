@@ -1,0 +1,11 @@
+package my.tdl.gamestates;
+
+import my.tdl.gamestate.GameState;
+import my.tdl.gamestate.GameStateManager;
+
+public class DungeonLevelLoader extends GameState{
+	
+	public DungeonLevelLoader(GameStateManager gsm){
+		super(gsm);
+	}
+}

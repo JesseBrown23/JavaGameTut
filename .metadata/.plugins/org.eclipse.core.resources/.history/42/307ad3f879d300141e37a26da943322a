@@ -1,0 +1,20 @@
+import java.awt.image.BufferedImage;
+
+
+public class SpriteSheet {
+	
+	private BufferedImage spriteSheet;
+	
+	public SpriteSheet() {
+		
+	}
+	
+	public void setSpriteShete(BufferedImage spriteShete) {
+		this.spriteSheet = spriteShete;
+	}
+	
+	public BufferedImage getTile(int xTile, int yTile, int width, int Height){
+		BufferedImage sprite = spriteSheet.getSubimage(xTile, yTile, width, height);
+		return spriteSheet;
+	}
+}

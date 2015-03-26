@@ -1,0 +1,8 @@
+
+public class SpriteSheet {
+
+	public SpriteSheet() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

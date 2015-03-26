@@ -1,0 +1,46 @@
+package my.project.gop.main;
+
+import java.awt.GraphicsDevice;
+
+import javax.swing.JFrame;
+
+public class GameWindow extends JFrame{
+	
+	boolean fse = false;
+	int fsm = 0;
+	GraphicsDevice device = GraphicsEnviroment.getLocalGraphicsEnviroment().getScreenDevices()[1];
+	
+	public GameWindow(String title, int width, int height) {
+		setTitle(title);
+		setSize(width, height);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		
+	}
+	private void setfullscreen(){
+		switch(fsm){
+		case 0:
+			System.out.println("No fullscreen");
+			setUndecorated(false);
+			break;
+		case 1:
+			setExtendedState(JFrame.MAXIMIZED_BOTH);
+			setUndecorated(true);
+			break;
+		case 2:
+			device.setFullScreenWindow(this);
+			setUndecorated(true);
+			break;
+		}
+	}
+	public void setFullscreen(int fsnm){
+		fse = true;
+		if(fsm <= 2){
+			this.fsm = fsnm;
+			setfullscreen();
+		}else{
+			System.err.println("Error" +fsnm+ " is not supported!");
+		}
+	}
+}

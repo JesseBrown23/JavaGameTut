@@ -1,0 +1,105 @@
+package my.project.gop.main;
+
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JPanel;
+
+public class JBGameLoop extends JPanel implements Runnable{
+	
+	private Thread thread;
+	private boolean running;
+	
+	private int fps, tps;
+	
+	private int width, height;
+	
+	public Graphics2D graphics2D;
+	private BufferedImage img;
+	
+	public static double currFPS = 120D;
+
+	public JBGameLoop(int width, int height) {
+		this.width = width;
+		this.height = height;
+		
+		setPreferredSize(new Dimension(width, height));
+		setFocusable(false);
+		requestFocus();
+	}
+	
+	@Override
+	public void addNotify() {
+		// TODO Auto-generated method stub
+		super.addNotify();
+		
+		if(thread == null){
+			thread = new Thread(this);
+			thread.start();
+		}
+	}
+	
+	@Override
+	public void run() {
+		
+		//Initialize all game objects and objects overall
+		init();
+		
+		//Returns current value of the most precise available system timer in nanoseconds
+		long lastTime = System.nanoTime();
+		double nsPerTick = 1000000000D / currFPS;
+		int frames = 0;
+		int ticks = 0;
+		//Returns current time in milliseconds
+		long lastTimer = System.currentTimeMillis();
+		//Speeds up the game if it runs slow
+		double deltaTime = 0;
+		
+		while(running){
+			long now = System.nanoTime();
+			deltaTime += (now - lastTime) / nsPerTick;
+			lastTime = now;
+			boolean shouldRender = false;
+			
+			while(deltaTime >= 1){
+				ticks++;
+				/*TICK + DeltaTime*/
+				//Updates game and speed up whatever physics are going slow
+				tick(deltaTime);
+				deltaTime -= 1;
+				shouldRender = true;
+			}
+			
+			if(shouldRender == true){
+				frames++;
+				/*RENDER*/
+				//Renders everything we draw
+				render();
+			}
+			
+			try {Thread.sleep(2);} catch (InterruptedException e) {e.printStackTrace();}
+			
+			if(System.currentTimeMillis() - lastTimer >= 1000){
+				lastTimer += 1000;
+				tps = frames;
+				fps = ticks;
+				ticks = 0;
+			}
+		}
+	}
+	private void init() {
+		img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		graphics2D = (Graphics2D) img.getGraphics();
+		running = true;
+	}
+	
+	private void tick(double deltaTime) {
+		
+		
+	}
+
+	private void render() {
+		grphaics2D.clearRect(0, 0, width, height);
+	}
+}

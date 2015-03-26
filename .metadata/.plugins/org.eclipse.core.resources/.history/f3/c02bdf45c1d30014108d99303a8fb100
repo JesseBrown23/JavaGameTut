@@ -1,0 +1,61 @@
+package my.project.gop.main;
+
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+
+public class JBGameLoop extends JPanel implements Runnable{
+	
+	private Thread thread;
+	private boolean running;
+	
+	private int fps, tps;
+	
+	private int width, height;
+	
+	public static double currFPS = 120D;
+
+	public JBGameLoop(int width, int height) {
+		this.width = width;
+		this.height = height;
+		
+		setPreferredSize(new Dimension(width, height));
+		setFocusable(false);
+		requestFocus();
+	}
+	
+	@Override
+	public void addNotify() {
+		// TODO Auto-generated method stub
+		super.addNotify();
+		
+		if(thread == null){
+			thread = new Thread(this);
+			thread.start();
+		}
+	}
+	
+	@Override
+	public void run() {
+		
+		//INIT
+		long lastTime = System.nanoTime();
+		double nsPerTick = 1000000000D / currFPS;
+		int frames = 0;
+		int ticks = 0;
+		long lastTimer = System.currentTimeMillis();
+		double deltaTime = 0;
+		
+		while(running){
+			long now = System.nanoTime();
+			deltaTime += (now - lastTime) / nsPerTick;
+			boolean shouldRender = false;
+			
+			while(deltaTime >= 1){
+				ticks++;
+				deltaTime -+ 1;
+				shouldRender = true;
+			}
+		}
+	}
+}

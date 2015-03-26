@@ -1,0 +1,32 @@
+package my.tdl.gameloop;
+
+import java.awt.Component;
+
+import my.project.gop.main.JBGameLoop;
+
+public class GameLoop extends JBGameLoop {
+	
+	public GameLoop(int fwidth, int fheight) {
+		super(fwidth, fheight);
+	}
+	
+	@Override
+	public void init() {
+		super.init();
+	}
+	
+	@Override
+	public void tick(double deltaTime) {
+	}
+	
+	@Override
+	public void render() {
+		super.render();
+		clear();
+	}
+	
+	@Override
+	public void clear() {
+		super.clear();
+	}
+}
