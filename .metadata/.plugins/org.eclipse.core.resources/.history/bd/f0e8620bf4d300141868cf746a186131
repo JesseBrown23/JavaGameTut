@@ -1,7 +1,6 @@
 package my.tdl.main;
 
 import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 
 import my.project.gop.main.GameWindow;
 import my.tdl.gameloop.GameLoop;
@@ -13,7 +12,7 @@ public class Main {
 	public static int height = gd.getDisplayMode().getHeight();
 
 	public static void main(String[] args) {
-		GameWindow frame = new GameWindow("TheDLooter", width, height);
+		GameWindow frame = new GameWindow("TheDLooter", 1280, 720);
 		frame.setFullscreen(1);
 		frame.add(new GameLoop(width, height));
 		frame.setVisible(true);
