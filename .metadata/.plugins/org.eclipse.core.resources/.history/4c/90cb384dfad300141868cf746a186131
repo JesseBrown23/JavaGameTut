@@ -11,11 +11,11 @@ public class GameStateManager {
 
 	public GameStateManager() {
 		states = new Stack<GameState>();
-		states.push(new DungeonLevelLoader(this));
 	}
 	
 	public void tick(double deltaTime){
 		states.peek().tick(deltaTime);
+		states.push(new DungeonLevelLoader(this));
 	}
 	
 	public void render(Graphics2D g){
