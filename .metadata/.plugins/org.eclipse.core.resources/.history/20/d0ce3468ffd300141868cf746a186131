@@ -3,7 +3,6 @@ package my.tdl.gamestates;
 import java.awt.Graphics2D;
 
 import my.project.gop.main.SpriteSheet;
-import my.project.gop.main.loadImageFrom;
 import my.tdl.gamestate.GameState;
 import my.tdl.gamestate.GameStateManager;
 import my.tdl.main.Main;
@@ -18,7 +17,7 @@ public class DungeonLevelLoader extends GameState{
 
 	@Override
 	public void init() {
-		test.setSpriteSheet(loadImageFrom.LoadImageFrom(Main.class, "spritesheet.png"));
+		test.setSpriteSheet(loadImageFrom(Main.class, "spritesheet.png"));
 	}
 
 	@Override

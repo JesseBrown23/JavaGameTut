@@ -18,7 +18,7 @@ public class DungeonLevelLoader extends GameState{
 
 	@Override
 	public void init() {
-		test.setSpriteSheet(loadImageFrom.LoadImageFrom(Main.class, "spritesheet.png"));
+		test.setSpriteSheet(loadImageFrom.LoadImageFrom(Main.class, "blankspritesheet.png"));
 	}
 
 	@Override
